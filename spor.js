@@ -50,6 +50,7 @@ app.get('/tours/oregon-coast', function(req, res){
 	res.render('tours/oregon-coast');
 });
 
+
 // Pagina 404
 app.use(function(req, res, next) {
     res.status(404);
