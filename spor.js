@@ -1,5 +1,5 @@
 var express = require('express');
-
+var fortune = require('./lib/fortune.js');
 var app = express();
 
 
@@ -11,21 +11,14 @@ app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 
-var fortune = [
-"Invinge frica ori ea te va invinge",
-"Riurile au nevoe de izvor",
-"Nu te teme de necunoscut",
-"Te asteapta o surpriza placuta",
-"Fii simplu"
-];
+
 
 app.get('/', function(req, res) {
 	res.render('home');
 });
 app.get('/about', function(req, res) {
-  var randomFortune =
-  fortune[Math.floor(Math.random()*fortune.length)];
-res.render('about',{ fortune: randomFortune});
+
+res.render('about',{ fortune: fortune.getFortune()});
 });
 
 // Pagina 404
